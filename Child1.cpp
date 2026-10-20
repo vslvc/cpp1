@@ -1,3 +1,17 @@
+//
+//  Child1.cpp
+//  ТехнологияПрограммирования1
+//
+//  Created by mak on 09.10.2023.
+//
+
+// Нужно настроить рабочую директорию (Xcode):
+// 1) Edit scheme
+// 2) Откроется окно по настройке scheme. Выбираешь вкладку "Run".
+// 3) Выбираешь вкладку "Options"
+// 4) Дальше ставишь галочку на "Working directory _ Use custom working directory:"
+//    и прописываешь путь к папке где лежит твой main.cpp
+
 #include "Child1.hpp"
 #include <iostream>
 

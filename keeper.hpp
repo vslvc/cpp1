@@ -1,3 +1,17 @@
+//
+//  keeper.hpp
+//  UniversityManagementSystem
+//
+//  Created by mak on 12.10.2023.
+//
+
+//Разработать класс Keeper, который реализует контейнер для хранения и обработки объектов.
+//Класс Keeper должен обеспечивать следующие функции:
+// ▪ добавление и удаление производных объектов абстрактного класса Base
+//   (базовый класс определяется согласно варианту задания);
+// ▪ полное сохранение себя в файле;
+// ▪ полное восстановление себя из файла.
+
 #ifndef keeper_hpp
 #define keeper_hpp
 
@@ -15,9 +29,9 @@ private:
     int sizeSR = this->size(4);
     int sizeTR = this->size(5);
     int sizeAR = this->size(6);
-    STUDENT* studArr = new STUDENT[100000]; 
-    TEACHER* teachArr = new TEACHER[100000]; 
-    ADMIN* adArr = new ADMIN[100000]; 
+    STUDENT* studArr = new STUDENT[100000]; //Создали массив
+    TEACHER* teachArr = new TEACHER[100000]; //Создали массив
+    ADMIN* adArr = new ADMIN[100000]; //Создали массив
 
 
 
@@ -48,4 +62,4 @@ public:
 
 };
 
-#endif 
+#endif /* keeper_hpp */

@@ -1,3 +1,17 @@
+//
+//  keeper.cpp
+//  UniversityManagementSystem
+//
+//  Created by mak on 12.10.2023.
+//
+
+//Разработать класс Keeper, который реализует контейнер для хранения и обработки объектов.
+//Класс Keeper должен обеспечивать следующие функции:
+// ▪ добавление и удаление производных объектов абстрактного класса Base
+//   (базовый класс определяется согласно варианту задания);
+// ▪ полное сохранение себя в файле;
+// ▪ полное восстановление себя из файла.
+
 #include "keeper.hpp"
 #include "baseAbstractClass.hpp"
 #include "Child1.hpp"
@@ -20,6 +34,189 @@ Keeper::Keeper(){
 //Создание динамического массива объектов
 //int size = 5;
 //MyClass* myArray = new MyClass[size];
+
+//▪ добавление и удаление производных объектов абстрактного класса Base
+//Добавить
+void Keeper::add(int n){
+    switch (n) {
+        case 1:{
+
+
+
+            STUDENT S(1);
+
+            studArr[sizeS] = S;
+            sizeS++;
+            cout << "\n\n\n";
+            studArr[sizeS].showOne();
+            cout << "\n\n\n";
+            this->saveInFile(3);
+            this->showAll(3);
+            break;
+        }
+        case 2:{
+
+
+
+            TEACHER T(1);
+
+            teachArr[sizeT] = T;
+            sizeT++;
+            cout << "\n\n\n";
+            teachArr[sizeT].showOne();
+            cout << "\n\n\n";
+            this->saveInFile(2);
+            this->showAll(2);
+            break;
+        }
+
+        case 3:{
+
+
+
+            ADMIN A(1);
+
+            adArr[sizeA] = A;
+            sizeA++;
+            cout << "\n\n\n";
+            adArr[sizeA].showOne();
+            cout << "\n\n\n";
+            this->saveInFile(3);
+            this->showAll(3);
+            break;
+        }
+        default:
+            break;
+    }
+
+}
+
+//Удалить
+template <typename T>
+void Keeper::pull(int size,T* arr, int n){
+    int n1;
+    cout << "Введите номер:\n->";
+    cin >> n1;
+    for (int i = n1; i < size ; i++){
+        arr[i] = arr[i+1];
+    }
+    size--;
+    this->saveInFile(n);
+    this->showAll(n);
+};
+
+void Keeper::editOne(int n){
+    switch (n) {
+        case 1:{
+            this->Edit(sizeS+1,studArr, 1);
+            break;
+        }
+        case 2:{
+            this->Edit(sizeT+1, teachArr,2);
+
+            break;
+        }
+        case 3:{
+            this->Edit(sizeA+1, adArr, 3);
+            break;
+        }
+    }
+
+}
+
+template <typename T>
+void Keeper::Edit(int size,T* arr, int n){
+    int n1;
+    cout << "Введите номер:\n->";
+    cin >> n1;
+
+
+    switch (n) {
+        case 1:{
+
+            STUDENT S(1);
+            studArr[n1] = S;
+            break;
+        }
+        case 2:{
+
+            TEACHER TTT(1);
+
+            teachArr[n1] = TTT;
+            break;
+        }
+        case 3:{
+
+            ADMIN A(1);
+
+            adArr[n1] = A;
+            break;
+        }
+        default:
+            break;
+    }
+
+    this->saveInFile(n);
+    this->showAll(n);
+
+}
+
+void Keeper::pullBack(int n){
+    switch (n) {
+        case 1:{
+            sizeS--;
+            this->pull(sizeS+1,studArr, 1);
+            break;
+        }
+        case 2:{
+            sizeT--;
+            this->pull(sizeT+1, teachArr,2);
+
+            break;
+        }
+        case 3:{
+            sizeA--;
+            this->pull(sizeA+1, adArr, 3);
+            break;
+        }
+    }
+
+}
+
+//полное сохранение себя в файле
+void Keeper::saveInFile(int n){
+    switch (n) {
+        case 1:{
+            ofstream file("STUDENT.txt", ofstream::trunc);
+            for (int i = 0; i < sizeS-1; i++){
+                file << studArr[i].name << "\t\t" << studArr[i].surname << "\t\t" << studArr[i].fathername << "\t\t" << studArr[i].group << "\t\t" << studArr[i].speciality << "\t\t" << studArr[i].course << "\t\t" << studArr[i].averagScore << "\n";
+            }
+            cout << "Данные записанны в файл\n";
+            file.close();
+            break;
+
+        }
+        case 2:{
+            ofstream file1("TEACHER.txt", ofstream::trunc);
+            for (int i = 0; i < sizeT; i++){
+                file1 << teachArr[i].name << "\t\t" << teachArr[i].surname << "\t\t" << teachArr[i].fathername << "\t\t" << teachArr[i].group << "\t\t" << teachArr[i].predmet << "\n";
+            }
+            cout << "Данные записанны в файл\n";
+            file1.close();
+            break;
+        }
+        case 3:{
+            ofstream file1("ADMIN.txt", ofstream::trunc);
+            for (int i = 0; i < sizeA; i++){
+                file1 << adArr[i].name << "\t\t" << adArr[i].surname << "\t\t" << adArr[i].fathername << "\t\t" << adArr[i].dolgnost << "\t\t" << adArr[i].number << "\t"<< adArr[i].oblast << "\n";
+            }
+            cout << "Данные записанны в файл\n";
+            file1.close();
+            break;
+        }
+    }
+
+}
 
 //восстановление себя из файла.
 void Keeper::loadFromFile(int n){
@@ -99,6 +296,63 @@ void Keeper::loadFromFile(int n){
     }
 
     //this->showAll();
+}
+
+void fromFileToFile(string inputFile, string outputFile){
+    std :: string line;
+    fstream file(inputFile);
+    ofstream file1(outputFile);
+
+    while (getline(file, line)) { // Читаем строки из входного файла
+        file1 << line << std::endl; // Записываем строки в выходной файл
+        cout << line << endl;
+    }
+
+    file.close();
+    file1.close();
+}
+
+//полное восстановление себя из файла.
+void Keeper::loadFromResFile(int n){
+    string inputFile = "";
+    string outputFile = "";
+
+    switch (n) {
+        case 1:{
+            string inputFile = "STUDENT_res.txt";
+            string outputFile = "STUDENT.txt";
+
+            fromFileToFile(inputFile,outputFile);
+
+            this->size(n);
+            break;
+        }
+
+        case 2:{
+
+            string inputFile = "TEACHER_res.txt";
+            string outputFile = "TEACHER.txt";
+
+            fromFileToFile(inputFile,outputFile);
+
+            this->size(n);
+            break;
+
+        }
+
+        case 3:{
+            string inputFile = "ADMIN_res.txt";
+            string outputFile = "ADMIN.txt";
+
+            fromFileToFile(inputFile,outputFile);
+
+            this->size(n);
+            break;
+
+        }
+    }
+
+
 }
 
 template <typename T>
