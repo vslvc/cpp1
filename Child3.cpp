@@ -1,3 +1,10 @@
+//
+//  Child3.cpp
+//  UniversityManagementSystem
+//
+//  Created by mak on 13.10.2023.
+//
+
 #include "Child3.hpp"
 #include <iostream>
 

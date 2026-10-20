@@ -1,3 +1,9 @@
+//
+//  keeper.cpp
+//  UniversityManagementSystem
+//
+//  Created by mak on 12.10.2023.
+//
 
 //Разработать класс Keeper, который реализует контейнер для хранения и обработки объектов.
 //Класс Keeper должен обеспечивать следующие функции:
@@ -41,11 +47,8 @@ void Keeper::add(int n){
 
             studArr[sizeS] = S;
             sizeS++;
-            cout << "\n\n\n";
-            studArr[sizeS].showOne();
-            cout << "\n\n\n";
-            this->saveInFile(3);
-            this->showAll(3);
+            this->saveInFile(1);
+            this->showAll(1);
             break;
         }
         case 2:{
@@ -56,9 +59,6 @@ void Keeper::add(int n){
 
             teachArr[sizeT] = T;
             sizeT++;
-            cout << "\n\n\n";
-            teachArr[sizeT].showOne();
-            cout << "\n\n\n";
             this->saveInFile(2);
             this->showAll(2);
             break;
@@ -72,9 +72,6 @@ void Keeper::add(int n){
 
             adArr[sizeA] = A;
             sizeA++;
-            cout << "\n\n\n";
-            adArr[sizeA].showOne();
-            cout << "\n\n\n";
             this->saveInFile(3);
             this->showAll(3);
             break;
@@ -182,7 +179,7 @@ void Keeper::saveInFile(int n){
     switch (n) {
         case 1:{
             ofstream file("STUDENT.txt", ofstream::trunc);
-            for (int i = 0; i < sizeS-1; i++){
+            for (int i = 0; i < sizeS; i++){
                 file << studArr[i].name << "\t\t" << studArr[i].surname << "\t\t" << studArr[i].fathername << "\t\t" << studArr[i].group << "\t\t" << studArr[i].speciality << "\t\t" << studArr[i].course << "\t\t" << studArr[i].averagScore << "\n";
             }
             cout << "Данные записанны в файл\n";
@@ -223,9 +220,9 @@ void Keeper::loadFromFile(int n){
             std :: string name1;
             std :: string surname1;
             std :: string fathername1;
-            int group1;
-            int course1;
-            double averagScore1;
+            int group1 = 0;
+            int course1 = 0;
+            double averagScore1 = 0;
             std :: string speciality1;
             ifstream file("STUDENT.txt");
             for (int i = 0; i < sizeS; i ++){

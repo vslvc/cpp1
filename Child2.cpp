@@ -1,3 +1,9 @@
+//
+//  Child2.cpp
+//  UniversityManagementSystem
+//
+//  Created by mak on 12.10.2023.
+//
 
 #include "Child2.hpp"
 #include <iostream>

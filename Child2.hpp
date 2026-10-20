@@ -1,3 +1,9 @@
+//
+//  Child2.hpp
+//  UniversityManagementSystem
+//
+//  Created by mak on 12.10.2023.
+//
 
 #ifndef Child2_hpp
 #define Child2_hpp

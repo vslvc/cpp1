@@ -1,3 +1,9 @@
+//
+//  baseAbstractClass.hpp
+//  ТехнологияПрограммирования1
+//
+//  Created by mak on 09.10.2023.
+//
 
 #ifndef baseAbstractClass_hpp
 #define baseAbstractClass_hpp
