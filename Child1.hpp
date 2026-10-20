@@ -1,9 +1,3 @@
-//
-//  Child1.hpp
-//  ТехнологияПрограммирования1
-//
-//  Created by mak on 09.10.2023.
-//
 
 #ifndef Child1_hpp
 #define Child1_hpp
